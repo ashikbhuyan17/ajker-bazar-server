@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
-const port = process.env.PORT || 9000
+const port = 9000
 require('dotenv').config()
 app.use(cors())    //middleware
 app.use(bodyParser.json())  //middleware
@@ -85,42 +85,7 @@ client.connect(err => {
 
 })
 
-// client.connect(err => {
-//   const items = client.db("ajkerbazar").collection("items");
 
-//   app.post('/admin', (req, res) => {
-//     const products = req.body;
-//     console.log("add new pd", products)
-//     items.insertOne(products)
-//       .then(result => {
-//         console.log('insert conunt', result.insertedCount)
-//         res.send(result.insertedCount)
-//       })
-//   })
-
-//   // show data in UI
-//   // app.get('/booking', (req, res) => {
-//   //   productCollection.find()
-//   //     .toArray((err, items) => {
-//   //       console.log(err)
-//   //       res.send(items)
-//   //     })
-
-//   // })
-
-//   // app.get('/checkOut/:id', (req, res) => {
-//   //   // const id = ObjectID(req.params.id);
-//   //   // console.log(id)
-//   //   productCollection.find({ _id: objectId(req.params.id) })
-//   //     .toArray((err, result) => {
-//   //       res.send(result[0])
-//   //       console.log(err, result)
-//   //     })
-
-//   // });
-
-
-// });
 
 
 
@@ -128,4 +93,4 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port)
+app.listen(process.env.PORT || port)
