@@ -79,6 +79,28 @@ client.connect(err => {
       })
   })
 
+  app.get('/products', (req, res) => {
+
+    let name = req.query.name
+    console.log(req.query)
+    if (name) {
+      productsCollection.find({ name: { $regex: name, $options: 'i' } })
+        .toArray((err, items) => {
+          console.log(items)
+          res.send(items)
+        })
+    }
+    else {
+      productsCollection.find()
+        .toArray((err, items) => {
+          console.log(items)
+          res.send(items)
+        })
+    }
+
+
+  })
+
 
 
 
